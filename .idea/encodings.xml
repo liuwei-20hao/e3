@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/e3_common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/e3_manage" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/e3_manage_dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/e3_manage_interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/e3_manage_pojo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/e3_manage_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/e3_manage_web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/e3_sso" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/e3_sso_interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/e3_sso_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/e3_sso_web" charset="UTF-8" />
+  </component>
+</project>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/e3_manage_service" />
+    <file type="web" url="file://$PROJECT_DIR$/e3_manage_web" />
+    <file type="web" url="file://$PROJECT_DIR$/e3_sso_service" />
+    <file type="web" url="file://$PROJECT_DIR$/e3_sso_web" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/e3_parent/pom.xml" />
+        <option value="$PROJECT_DIR$/e3_common/pom.xml" />
+        <option value="$PROJECT_DIR$/e3_manage/pom.xml" />
+        <option value="$PROJECT_DIR$/e3_manage_web/pom.xml" />
+        <option value="E:/BaiduNetdiskDownload/项目二：宜立方商城（80-93天）/项目二：宜立方商城（80-93天）/e3商城_day01/e3商城_day01/黑马32期/01.教案-3.0/01.参考资料/FastDFS/bin/fastdfs_client/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectResources">
+    <resource url="http://code.alibabatech.com/schema/dubbo/dubbo.xsd" location="$MAVEN_REPOSITORY$/com/alibaba/dubbo/2.5.3/dubbo-2.5.3.jar!/META-INF/dubbo.xsd" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8 (1)" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
