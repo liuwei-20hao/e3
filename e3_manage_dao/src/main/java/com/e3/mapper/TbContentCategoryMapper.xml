@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.e3.mapper.TbContentCategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.e3.pojo.TbContentCategory" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="sort_order" property="sortOrder" jdbcType="INTEGER" />
+    <result column="is_parent" property="isParent" jdbcType="BIT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <select id="getContentCategoryList" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    id, parent_id, name, status, sort_order, is_parent, created, updated
+    from tb_content_category
+    where parent_id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="getListByParentId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    id, parent_id, name, status, sort_order, is_parent, created, updated
+    from tb_content_category
+    where parent_id = #{parent_id,jdbcType=BIGINT}
+  </select>
+
+  <insert id="insert" parameterType="com.e3.pojo.TbContentCategory" >
+    <selectKey keyProperty="id" resultType="long" order="AFTER">
+      select last_insert_id()
+    </selectKey>
+    insert into tb_content_category (id, parent_id, name,
+    status, sort_order, is_parent,
+    created, updated)
+    values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
+    #{status,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER}, #{isParent,jdbcType=BIT},
+    #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
+  </insert>
+
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+     id, parent_id, name, status, sort_order, is_parent, created, updated
+    from tb_content_category
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <update id="updateById" parameterType="com.e3.pojo.TbContentCategory" >
+    update tb_content_category
+    set parent_id = #{parentId,jdbcType=BIGINT},
+    name = #{name,jdbcType=VARCHAR},
+    status = #{status,jdbcType=INTEGER},
+    sort_order = #{sortOrder,jdbcType=INTEGER},
+    is_parent = #{isParent,jdbcType=BIT},
+    created = #{created,jdbcType=TIMESTAMP},
+    updated = #{updated,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateNameById" parameterType="com.e3.pojo.TbContentCategory" >
+    update tb_content_category
+    set name = #{name,jdbcType=VARCHAR},
+    updated = #{updated,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateIsParentById" parameterType="com.e3.pojo.TbContentCategory" >
+    update tb_content_category
+    set is_parent = #{isParent,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <delete id="deleteById" parameterType="java.lang.Long" >
+    delete from tb_content_category
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+</mapper>

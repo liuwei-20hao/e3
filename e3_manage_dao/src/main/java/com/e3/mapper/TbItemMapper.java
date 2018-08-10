@@ -9,4 +9,6 @@ public interface TbItemMapper {
     TbItem selectByPrimaryKey(Long id);
     public List<TbItem> selectTbItem();
     void insert(TbItem tbItem);
+    void updateItem(TbItem tbItem);
+    void deleteById(long id);
 }

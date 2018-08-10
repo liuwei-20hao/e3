@@ -28,6 +28,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public TbItemDesc getTbItemDescById(long id) {
+        return tbItemDescMapper.selectById(id);
+    }
+
+    @Override
     public EasyUIDataGridResult getItemList(int page, int rows) {
         //设置分页信息
         PageHelper.startPage(page, rows);
@@ -66,6 +71,53 @@ public class ItemServiceImpl implements ItemService {
         //向商品描述表插入数据
         tbItemDescMapper.insert(itemDesc);
         //返回成功
+        return E3Result.ok();
+    }
+
+    @Override
+    public E3Result updateTtem(TbItem tbItem, String desc) {
+        tbItem.setUpdated(new Date());
+        //1-正常，2-下架，3-删除
+        tbItem.setStatus((byte) 1);
+        tbItemMapper.updateItem(tbItem);
+        TbItemDesc tbItemDesc = new TbItemDesc();
+        tbItemDesc.setItemId(tbItem.getId());
+        tbItemDesc.setItemDesc(desc);
+        tbItemDesc.setUpdated(new Date());
+        tbItemDescMapper.update(tbItemDesc);
+        return E3Result.ok();
+    }
+
+    @Override
+    public E3Result reshelfItem(Long [] params) {
+        for(long id :params){
+            TbItem tbItem = new TbItem();
+            tbItem.setStatus((byte) 1);
+            tbItem.setId(id);
+            tbItemMapper.updateItem(tbItem);
+        }
+        return E3Result.ok();
+    }
+
+    @Override
+    public E3Result instockItem(Long [] params) {
+        for(long id :params){
+            TbItem tbItem = new TbItem();
+            tbItem.setStatus((byte) 2);
+            tbItem.setId(id);
+            tbItemMapper.updateItem(tbItem);
+        }
+        return E3Result.ok();
+    }
+
+    @Override
+    public E3Result deleteItem(Long [] params) {
+        for(long id :params){
+            TbItem tbItem = new TbItem();
+            tbItem.setStatus((byte) 3);
+            tbItem.setId(id);
+            tbItemMapper.updateItem(tbItem);
+        }
         return E3Result.ok();
     }
 

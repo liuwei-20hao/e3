@@ -10,6 +10,7 @@
     <modules>
         <module>../e3_sso</module>
       <module>../e3_sso_web</module>
+        <module>../e3_portal_web</module>
     </modules>
     <packaging>pom</packaging>
   <name>e3_parent</name>

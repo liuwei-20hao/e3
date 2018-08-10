@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.e3.mapper.TbItemDescMapper" >
+  <resultMap id="BaseResultMap" type="com.e3.pojo.TbItemDesc" >
+    <id column="item_id" property="itemId" jdbcType="BIGINT" />
+    <result column="item_desc" property="itemDesc" jdbcType="LONGVARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
 <insert id="insert" parameterType="com.e3.pojo.TbItemDesc" >
   insert into tb_item_desc (item_id, created, updated,
   item_desc)
   values (#{itemId,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP},
   #{itemDesc,jdbcType=LONGVARCHAR})
 </insert>
+
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    item_id, created, updated,item_desc
+    from tb_item_desc
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </select>
+
+  <update id="update" parameterType="com.e3.pojo.TbItemDesc" >
+    update tb_item_desc
+    <set >
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemDesc != null" >
+        item_desc = #{itemDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+
+  <delete id="delete" parameterType="java.lang.Long" >
+    delete from tb_item_desc
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </delete>
 </mapper>

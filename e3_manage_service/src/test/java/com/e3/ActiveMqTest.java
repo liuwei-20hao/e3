@@ -1,3 +1,4 @@
+/*
 package com.e3;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -8,9 +9,11 @@ import org.springframework.jms.connection.ConnectionFactoryUtils;
 import javax.jms.*;
 
 public class ActiveMqTest {
-    /**
+    */
+/**
      * queue  点到点模式
-     */
+     *//*
+
     @Test
     public void testQueueProducer() throws Exception{
         //1、创建一个连接工厂对象，需要指定服务的ip及端口。
@@ -28,8 +31,10 @@ public class ActiveMqTest {
         //6、使用Session对象创建一个Producer对象。
         MessageProducer producer = session.createProducer(queue);
         //7、创建一个Message对象，可以使用TextMessage。
-		/*TextMessage textMessage = new ActiveMQTextMessage();
-		textMessage.setText("hello Activemq");*/
+		*/
+/*TextMessage textMessage = new ActiveMQTextMessage();
+		textMessage.setText("hello Activemq");*//*
+
         TextMessage textMessage = session.createTextMessage("hello activemq2");
         //8、发送消息
         producer.send(textMessage);
@@ -97,8 +102,10 @@ public class ActiveMqTest {
         //6、使用Session对象创建一个Producer对象。
         MessageProducer producer = session.createProducer(topic);
         //7、创建一个Message对象，可以使用TextMessage。
-		/*TextMessage textMessage = new ActiveMQTextMessage();
-		textMessage.setText("hello Activemq");*/
+		*/
+/*TextMessage textMessage = new ActiveMQTextMessage();
+		textMessage.setText("hello Activemq");*//*
+
         TextMessage textMessage = session.createTextMessage("hello topic");
         //8、发送消息
         producer.send(textMessage);
@@ -148,3 +155,4 @@ public class ActiveMqTest {
         connection.close();
     }
 }
+*/

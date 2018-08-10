@@ -20,6 +20,7 @@
         <module>../e3_manage_dao</module>
         <module>../e3_manage_interface</module>
         <module>../e3_manage_service</module>
+        <module>../e3_content</module>
     </modules>
 
     <dependencies>

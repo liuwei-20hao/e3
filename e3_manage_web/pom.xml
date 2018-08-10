@@ -22,6 +22,11 @@
             <groupId>com.e3</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <artifactId>e3_content_interface</artifactId>
+            <groupId>com.e3</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!-- JSP相关 -->
         <dependency>
             <groupId>jstl</groupId>

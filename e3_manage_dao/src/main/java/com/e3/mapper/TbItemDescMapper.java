@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface TbItemDescMapper {
     void insert(TbItemDesc tbItemDesc);
+    TbItemDesc selectById(long id);
+    void update(TbItemDesc tbItemDesc);
+    void delete(long itemId);
 }

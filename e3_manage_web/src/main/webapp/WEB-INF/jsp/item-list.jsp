@@ -17,7 +17,7 @@
         </tr>
     </thead>
 </table>
-<div id="itemEditWindow" class="easyui-window" title="编辑商品" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/rest/page/item-edit'" style="width:80%;height:80%;padding:10px;">
+<div id="itemEditWindow" class="easyui-window" title="编辑商品" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/item-edit'" style="width:80%;height:80%;padding:10px;">
 </div>
 <script>
 
@@ -110,14 +110,14 @@
         iconCls:'icon-cancel',
         handler:function(){
         	var ids = getSelectionsIds();
-        	if(ids.length == 0){
-        		$.messager.alert('提示','未选中商品!');
-        		return ;
+                if(ids.length == 0){
+                    $.messager.alert('提示','未选中商品!');
+                    return ;
         	}
         	$.messager.confirm('确认','确定删除ID为 '+ids+' 的商品吗？',function(r){
         	    if (r){
         	    	var params = {"ids":ids};
-                	$.post("/rest/item/delete",params, function(data){
+                	$.post("/item/delete",params, function(data){
             			if(data.status == 200){
             				$.messager.alert('提示','删除商品成功!',undefined,function(){
             					$("#itemList").datagrid("reload");

@@ -1,4 +1,5 @@
 com\e3\mapper\TbItemDescMapper.class
 com\e3\mapper\TbUserMapper.class
 com\e3\mapper\TbItemCatMapper.class
+com\e3\mapper\TbContentCategoryMapper.class
 com\e3\mapper\TbItemMapper.class
