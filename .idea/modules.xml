@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/e3_common/e3_common.iml" filepath="$PROJECT_DIR$/e3_common/e3_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e3_content/e3_content.iml" filepath="$PROJECT_DIR$/e3_content/e3_content.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e3_content_interface/e3_content_interface.iml" filepath="$PROJECT_DIR$/e3_content_interface/e3_content_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e3_content_service/e3_content_service.iml" filepath="$PROJECT_DIR$/e3_content_service/e3_content_service.iml" />
       <module fileurl="file://$PROJECT_DIR$/e3_manage/e3_manage.iml" filepath="$PROJECT_DIR$/e3_manage/e3_manage.iml" />
       <module fileurl="file://$PROJECT_DIR$/e3_manage_dao/e3_manage_dao.iml" filepath="$PROJECT_DIR$/e3_manage_dao/e3_manage_dao.iml" />
       <module fileurl="file://$PROJECT_DIR$/e3_manage_interface/e3_manage_interface.iml" filepath="$PROJECT_DIR$/e3_manage_interface/e3_manage_interface.iml" />
@@ -10,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/e3_manage_service/e3_manage_service.iml" filepath="$PROJECT_DIR$/e3_manage_service/e3_manage_service.iml" />
       <module fileurl="file://$PROJECT_DIR$/e3_manage_web/e3_manage_web.iml" filepath="$PROJECT_DIR$/e3_manage_web/e3_manage_web.iml" />
       <module fileurl="file://$PROJECT_DIR$/e3_parent/e3_parent.iml" filepath="$PROJECT_DIR$/e3_parent/e3_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e3_portal_web/e3_portal_web.iml" filepath="$PROJECT_DIR$/e3_portal_web/e3_portal_web.iml" />
       <module fileurl="file://$PROJECT_DIR$/e3_sso/e3_sso.iml" filepath="$PROJECT_DIR$/e3_sso/e3_sso.iml" />
       <module fileurl="file://$PROJECT_DIR$/e3_sso_interface/e3_sso_interface.iml" filepath="$PROJECT_DIR$/e3_sso_interface/e3_sso_interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/e3_sso_service/e3_sso_service.iml" filepath="$PROJECT_DIR$/e3_sso_service/e3_sso_service.iml" />

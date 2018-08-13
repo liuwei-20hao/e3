@@ -7,11 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="e3_common" />
+        <module name="e3_content_interface" />
+        <module name="e3_content_service" />
         <module name="e3_manage_dao" />
         <module name="e3_manage_interface" />
         <module name="e3_manage_pojo" />
         <module name="e3_manage_service" />
         <module name="e3_manage_web" />
+        <module name="e3_portal_web" />
         <module name="e3_sso_interface" />
         <module name="e3_sso_service" />
         <module name="e3_sso_web" />
@@ -20,6 +23,9 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="e3_common" target="1.8" />
+      <module name="e3_content" target="1.5" />
+      <module name="e3_content_interface" target="1.8" />
+      <module name="e3_content_service" target="1.8" />
       <module name="e3_manage" target="1.5" />
       <module name="e3_manage_dao" target="1.8" />
       <module name="e3_manage_interface" target="1.8" />
@@ -27,6 +33,7 @@
       <module name="e3_manage_service" target="1.8" />
       <module name="e3_manage_web" target="1.8" />
       <module name="e3_parent" target="1.5" />
+      <module name="e3_portal_web" target="1.8" />
       <module name="e3_sso" target="1.5" />
       <module name="e3_sso_interface" target="1.8" />
       <module name="e3_sso_service" target="1.8" />

@@ -78,7 +78,8 @@ function menuHandler(item){
 					tree.tree("remove",node.target);
 				});	
 			}
-		});
+
+        });
 	}
 }
 </script>
