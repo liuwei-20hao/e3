@@ -11,6 +11,11 @@
         <module>../e3_sso</module>
       <module>../e3_sso_web</module>
         <module>../e3_portal_web</module>
+        <module>../e3_cart</module>
+        <module>../e3_cart_web</module>
+        <module>../e3_item_web</module>
+        <module>../e3_order</module>
+      <module>../e3_order_web</module>
     </modules>
     <packaging>pom</packaging>
   <name>e3_parent</name>

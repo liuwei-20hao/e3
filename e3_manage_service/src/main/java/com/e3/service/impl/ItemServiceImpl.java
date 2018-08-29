@@ -6,6 +6,7 @@ import com.e3.pojo.*;
 import com.e3.service.ItemService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +23,31 @@ public class ItemServiceImpl implements ItemService {
     private TbItemMapper tbItemMapper;
     @Autowired
     private TbItemDescMapper tbItemDescMapper;
+    @Autowired
+    private JedisClient jedisClient;
     @Override
     public TbItem getTbItemById(long id) {
-        return tbItemMapper.selectByPrimaryKey(id);
+        try{
+            String json = jedisClient.get("item_info" + ":" + id + ":BASE");
+            if(StringUtils.isNotBlank(json)) {
+                TbItem tbItem = JsonUtils.jsonToPojo(json, TbItem.class);
+                return tbItem;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        TbItem tbItem = tbItemMapper.selectByPrimaryKey(id);
+        if(tbItem!=null){
+            try{
+                jedisClient.set("item_info" + ":" + id + ":BASE", JsonUtils.objectToJson(tbItem));
+                jedisClient.expire("item_info"+ ":" + id + ":BASE", 3600);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            return tbItem;
+        }
+        return null;
+                
     }
 
     @Override

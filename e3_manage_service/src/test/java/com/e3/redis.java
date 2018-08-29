@@ -10,6 +10,7 @@ public class redis {
 
         //1、获得连接对象
         Jedis jedis = new Jedis("132.232.17.190", 6379);
+        jedis.auth("841303829");
 
         //2、获得数据
         String username = jedis.get("lw");

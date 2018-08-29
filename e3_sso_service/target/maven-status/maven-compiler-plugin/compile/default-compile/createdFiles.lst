@@ -1,2 +1,3 @@
 com\e3\sso\service\impl\LoginServiceImpl.class
+com\e3\sso\service\impl\TolenServiceImpl.class
 com\e3\sso\service\impl\RegitsterServiceImpl.class

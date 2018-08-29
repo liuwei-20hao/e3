@@ -1,3 +1,7 @@
+com\e3\mapper\TbContentMapper.class
+com\e3\mapper\TbOrderMapper.class
+com\e3\mapper\TbOrderShippingMapper.class
+com\e3\mapper\TbOrderItemMapper.class
 com\e3\mapper\TbItemDescMapper.class
 com\e3\mapper\TbUserMapper.class
 com\e3\mapper\TbItemCatMapper.class

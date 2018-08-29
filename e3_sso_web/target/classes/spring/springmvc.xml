@@ -27,4 +27,5 @@
 	<dubbo:registry protocol="zookeeper" address="132.232.17.190:2181"/>
 	<dubbo:reference interface="com.e3.sso.service.RegitsterService" id="regitsterService" />
 	<dubbo:reference interface="com.e3.sso.service.LoginService" id="loginService" />
+	<dubbo:reference interface="com.e3.sso.service.TolenService" id="tolenService" />
 </beans>

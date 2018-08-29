@@ -2,9 +2,11 @@ package com.e3.content.service.impl;
 
 import com.e3.content.service.ContentCategoryService;
 import com.e3.mapper.TbContentCategoryMapper;
-import com.e3.pojo.E3Result;
-import com.e3.pojo.EasyUITreeNode;
-import com.e3.pojo.TbContentCategory;
+import com.e3.mapper.TbContentMapper;
+import com.e3.pojo.*;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,12 @@ import java.util.List;
 public class ContentCategoryServiceImpl implements ContentCategoryService {
     @Autowired
     private TbContentCategoryMapper tbContentCategoryMapper;
+
+    @Autowired
+    private TbContentMapper tbContentMapper;
+
+    @Autowired
+    private JedisClient jedisClient;
 
     @Override
     public List<EasyUITreeNode> getContentCategoryList(long parentId) {
@@ -80,6 +88,78 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
         //判断是否更新父节点
         this.updateParentNode(node.getParentId());
         return E3Result.ok();
+    }
+
+    @Override
+    public EasyUIDataGridResult getContentList(Integer page, Integer rows, long categoryId) {
+        //设置分页信息
+        PageHelper.startPage(page, rows);
+        //执行查询
+        List<TbContent> tbContentlist = tbContentMapper.getContentListById(categoryId);
+        //创建一个返回值对象
+        EasyUIDataGridResult result = new EasyUIDataGridResult();
+        result.setRows(tbContentlist);
+        //取分页结果
+        PageInfo<TbContent> pageInfo = new PageInfo<>(tbContentlist);
+        //取总记录数
+        long total = pageInfo.getTotal();
+        result.setTotal(total);
+        return result;
+    }
+
+    @Override
+    public E3Result addTbContent(TbContent tbContent) {
+        tbContent.setCreated(new Date());
+        tbContent.setUpdated(new Date());
+        tbContentMapper.insert(tbContent);
+        //缓存同步
+        jedisClient.hdel("CONTENT_LIST",tbContent.getCategoryId().toString());
+        return E3Result.ok();
+    }
+
+    @Override
+    public E3Result updateById(TbContent tbContent) {
+        tbContent.setUpdated(new Date());
+        tbContentMapper.updateById(tbContent);
+        //缓存同步
+        jedisClient.hdel("CONTENT_LIST",tbContent.getCategoryId().toString());
+        return E3Result.ok();
+    }
+
+    @Override
+    public E3Result deleteById(long[] ids) {
+        TbContent tbContent = null;
+        for(long id :ids){
+            tbContent = tbContentMapper.getContentById(id);
+            tbContentMapper.deleteById(id);
+        }
+        //缓存同步
+        jedisClient.hdel("CONTENT_LIST",tbContent.getCategoryId().toString());
+        return E3Result.ok();
+    }
+
+    @Override
+    public List<TbContent> getContentListById(long categoryId) {
+        //查询缓存
+        try{
+            String json = jedisClient.hget("CONTENT_LIST", categoryId + "");
+            if(StringUtils.isNotEmpty(json)){
+                List<TbContent> list = JsonUtils.jsonToList(json,TbContent.class);
+                return  list;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        //缓存中存在直接返回结果
+        //缓存中不存在则查询数据库
+        List<TbContent> contentList = tbContentMapper.getContentListById(categoryId);
+        //添加结果到缓存
+        try{
+            jedisClient.hset("CONTENT_LIST",categoryId + "",JsonUtils.objectToJson(contentList));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return contentList;
     }
 
     public void delete(Long id){

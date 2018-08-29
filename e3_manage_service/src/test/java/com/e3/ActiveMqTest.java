@@ -1,4 +1,4 @@
-/*
+
 package com.e3;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -9,10 +9,6 @@ import org.springframework.jms.connection.ConnectionFactoryUtils;
 import javax.jms.*;
 
 public class ActiveMqTest {
-    */
-/**
-     * queue  点到点模式
-     *//*
 
     @Test
     public void testQueueProducer() throws Exception{
@@ -31,11 +27,9 @@ public class ActiveMqTest {
         //6、使用Session对象创建一个Producer对象。
         MessageProducer producer = session.createProducer(queue);
         //7、创建一个Message对象，可以使用TextMessage。
-		*/
-/*TextMessage textMessage = new ActiveMQTextMessage();
-		textMessage.setText("hello Activemq");*//*
-
-        TextMessage textMessage = session.createTextMessage("hello activemq2");
+       /* TextMessage textMessage = new ActiveMQTextMessage();
+		textMessage.setText("hello Activemq");*/
+        TextMessage textMessage = session.createTextMessage("hello activemq3");
         //8、发送消息
         producer.send(textMessage);
         //9、关闭资源
@@ -56,7 +50,7 @@ public class ActiveMqTest {
         //第二个参数：应答模式。自动应答或者手动应答。一般自动应答。
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
         //5、使用Session对象创建一个Destination对象。两种形式queue、topic，现在应该使用queue
-        Queue queue = session.createQueue("spring-queue");
+        Queue queue = session.createQueue("test-queue");
         //6.使用Session对象创建一个消费者对象。
         MessageConsumer consumer = session.createConsumer(queue);
         //7 接收消息
@@ -102,10 +96,8 @@ public class ActiveMqTest {
         //6、使用Session对象创建一个Producer对象。
         MessageProducer producer = session.createProducer(topic);
         //7、创建一个Message对象，可以使用TextMessage。
-		*/
-/*TextMessage textMessage = new ActiveMQTextMessage();
-		textMessage.setText("hello Activemq");*//*
-
+        /*TextMessage textMessage = new ActiveMQTextMessage();
+		textMessage.setText("hello Activemq");*/
         TextMessage textMessage = session.createTextMessage("hello topic");
         //8、发送消息
         producer.send(textMessage);
@@ -155,4 +147,4 @@ public class ActiveMqTest {
         connection.close();
     }
 }
-*/
+

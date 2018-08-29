@@ -22,4 +22,5 @@
 	<!-- 声明需要暴露的服务接口 -->
 	<dubbo:service interface="com.e3.sso.service.RegitsterService" ref="regitsterServiceImpl" timeout="600000"/>
 	<dubbo:service interface="com.e3.sso.service.LoginService" ref="loginServiceImpl" timeout="600000"/>
+	<dubbo:service interface="com.e3.sso.service.TolenService" ref="tolenServiceImpl" timeout="600000"/>
 </beans>
